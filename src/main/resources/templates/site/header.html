@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header role="header">
+    <!-- /////////////////////////////////////////Navigation -->
+    <button id="mm-menu-toggle" class="mm-menu-toggle">Toggle Menu</button>
+    <nav id="mm-menu" class="mm-menu">
+        <div class="mm-menu__header">
+            <h2 class="mm-menu__title">KOMPLEET</h2>
+        </div>
+        <ul class="mm-menu__items">
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="\home">
+                    <span class="mm-menu__link-text"><i class="fa fa-home"></i> Home</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="\blog">
+                    <span class="mm-menu__link-text"><i class="fa fa-user"></i> Blog</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="\about">
+                    <span class="mm-menu__link-text"><i class="fa fa-inbox"></i> About</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="\contact">
+                    <span class="mm-menu__link-text"><i class="fa fa-heart"></i> Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav><!-- /nav -->
+
+    <!-- /////////////////////////////////////////Header -->
+    <div class="top-header">
+    </div>
+    <div class="svg-container nav-svg svg-block">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1950 150">
+            <g transform="translate(0,-902.36218)"></g>
+            <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+            <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+            <path d="M 0,150 0,0 1925,0"></path>
+        </svg>
+    </div>
+    <header id="masthead" class="site-header" role="banner" style="background-position: 50% -50px;">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="site-branding">
+                <a href="index" title="KOMPLEET"><img class="site-logo" th:src="@{/site/images/logo.png}" alt="KOMPLEET"></a>
+            </div><!-- .site-branding -->
+        </div>
+        <div class="svg-container header-svg svg-block">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1890 150">
+                <g transform="translate(0,-902.36218)"></g>
+                <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                <path d="m 1925,0 0,150 -1925,0"></path>
+            </svg>
+        </div>
+    </header>
+    <!-- Header -->
+</header>
+</html>

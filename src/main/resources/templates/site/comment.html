@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="comment">
+    <div class="comment-respond container">
+        <h3 id="reply-title" class="comment-reply-title">Leave a Reply</h3>
+        <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields
+            are marked <span class="required">*</span></p>
+        <div id="comment_form">
+            <form name="form1" id="comment" method="post" action="">
+                <label>
+                    <span>Your message here:</span>
+                    <textarea name="message" id="message"></textarea>
+                </label>
+                <label>
+                    <span>Enter your name:</span>
+                    <input type="text" name="name" id="name" required>
+                </label>
+                <label>
+                    <span>Enter your email:</span>
+                    <input type="email" name="email" id="email" required>
+                </label>
+                <label>
+                    <span>Enter your website:</span>
+                    <input type="text" name="website" id="website">
+                </label>
+                <center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
+            </form>
+        </div>
+    </div>
+
+</div>
+</html>

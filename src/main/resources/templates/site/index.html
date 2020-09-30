@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="site/head::head(@{Home})"></div>
+
+<body id="wrapper">
+
+	<!-- header -->
+	<div th:replace="site/header::header"></div>
+<!--
+	&lt;!&ndash; Content&ndash;&gt;
+	<div th:replace="site/content::content"></div>-->
+
+	<!-- Footer -->
+	<div th:replace="site/footer::footer"></div>
+
+	<!-- Top Slider -->
+	<script type="text/javascript" th:src="@{/site/js/jquery.js}"></script>
+
+	<!-- Menu Js -->
+	<script type="text/javascript" th:src="@{/site/js/materialMenu.js}"></script>
+	<script>
+        var menu = new Menu;
+	</script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script type="text/javascript" th:src="@{/site/js/bootstrap.min.js}"></script>
+</body>
+</html>

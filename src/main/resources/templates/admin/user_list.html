@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>用户列表</title>
+
+    <link th:href="@{/admin/layui/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>用户管理</legend>
+        </fieldset>
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item demoTable">
+                <div class="layui-inline">
+                    <button class="layui-btn" data-type="add">添加</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-comm" data-type="reload" lay-submit
+                            lay-filter="search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">登录名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="userName" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">角色</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="roleName" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="layui-card-body">
+
+            <table id="commentTable" lay-filter="commentFilter"></table>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="table-content-com">
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i
+            class="layui-icon layui-icon-edit"></i>编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i
+            class="layui-icon layui-icon-delete"></i>删除</a>
+</script>
+<script type="text/javascript" th:src="@{/admin/layui/layui/layui.js}"></script>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+        var form = layui.form
+        var $ = layui.$;
+        table.render({
+            elem: '#commentTable'
+            ,id: 'TableReload'
+            , height: 405
+            , url: '/admin/user/list' //数据接口
+            , request: {
+                pageName: 'page' //页码的参数名称，默认：page
+                , limitName: 'size' //每页数据量的参数名，默认：limit
+            }
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.message, //解析提示文本
+                    "count": res.data.total, //解析数据长度
+                    "data": res.data.list //解析数据列表
+                };
+            }
+            , cols: [
+                [ //表头
+                    {type: 'checkbox', fixed: 'left'}
+                    , {type: 'numbers', title: '序号', width: 60, sort: true, fixed: 'left'}
+                    , {field: 'userName', title: '登陆名', minWidth: 80, sort: true}
+                    , {field: 'screenName', title: '昵称', width: 80, sort: true}
+                    , {field: 'email', title: '邮箱', width: 120, sort: true}
+                    , {field: 'roleName', title: '角色', width: 100, sort: true}
+                    , {field: 'ps', title: '备注', width: 100, sort: true}
+                    , {
+                    field: 'modified',
+                    title: '修改时间',
+                    minWidth: 180,
+                    sort: true,
+                    templet: '<div>{{ layui.util.toDateString(d.created, "yyyy-MM-dd HH:mm:ss") }}</div>'
+                }
+                    , {fixed: 'right', title: '操作', toolbar: '#table-content-com', width: 160}
+
+                ]
+            ]
+            , page: true //开启分页
+            , limit: 10
+            , limits: [10, 20, 40, 50, 80, 100]
+        });
+
+
+        //监听工具条
+        table.on('tool(commentFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'del') {
+                layer.prompt({
+                    formType: 1
+                    ,title: '敏感操作，请验证口令'
+                }, function(value, index){
+                    $.ajax({
+                        url: "/admin/user/checkDel/pwd/",
+                        type: "post",
+                        dataType: "json",
+                        data: {pwd: value},
+                        success: function (res) {
+                            if (res.code == "success") {
+                                layer.close(index);
+                                dele(data.uId);
+                            } else {
+                                layer.msg(res.msg);
+                                layer.close(index);
+                            }
+                        },
+                        error: function (res) {
+                            $.layer.alert('错误', res.msg);
+                        }
+                    });
+                });
+            } else if (obj.event === 'edit') {
+                edit(data.uId);
+            }
+        });
+
+        //监听搜索
+        form.on('submit(search)', function (data) {
+            var field = data.field;
+
+            alert(JSON.stringify(field.userName));
+            //执行重载
+            table.reload('TableReload', {
+                where: {
+                    userName: field.userName
+                }
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        });
+
+        var active = {
+            add: function(){
+                layer.open({
+                    type: 2
+                    ,title: '添加管理员'
+                    ,content: '/admin/html/adduser.html'
+                    ,area: ['420px', '408px']
+                    ,btn: ['确定', '取消']
+                    ,yes: function(index, layero){
+
+/*                        var body = layer.getChildFrame('body', index);
+                        var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+                        console.log(body.html()) //得到iframe页的body内容
+                        body.find('input').val('Hi，我是从父页来的')*/
+
+                        var iframeWindow = window['layui-layer-iframe'+ index]
+                            ,submitID = 'LAY-user-back-submit'
+                            ,submit = layero.find('iframe').contents().find('#'+ submitID);
+
+                        //监听提交
+                        iframeWindow.layui.form.on('submit('+ submitID +')', function(data){
+                            var field = data.field; //获取提交的字段
+                            layui.layer.load();
+                            $.ajax({
+                                url: "/admin/user/add/ad",
+                                type: "post",
+                                dataType: "json",
+                                data: field,
+                                success: function (res) {
+                                    layui.layer.closeAll();
+                                    if (res.code == "success") {
+                                        layer.msg("添加成功");
+
+                                    }else {
+                                        layer.msg(res.msg);
+                                    }
+                                    table.reload('TableReload');
+                                },
+                                error: function (res) {
+                                    $.layer.alert('错误', res.msg);
+                                }
+                            });
+                            layer.close(index); //关闭弹层
+                        });
+
+                        submit.trigger('click');
+                    },
+                    success: function (layero, index) {
+                        var iframeWindow = window['layui-layer-iframe' + index]
+                        $.ajax({
+                            url: '/admin/role/selectList',
+                            dataType: 'json',
+                            type: 'get',
+                            success: function (data) {
+                                //使用循环遍历，给下拉列表赋值
+                                $.each(data.data, function (index, value) {
+                                    // 下拉菜单里添加元素
+                                    layero.find('iframe').contents().find('#roleName').append(new Option(value.roleName,value.rId));
+                                });
+                                //重新渲染 固定写法
+                                iframeWindow.layui.form.render("select");
+                            }
+                        })
+                    }
+                });
+            }
+        }
+
+        $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+
+        function edit(id){
+            $.ajax({
+                url: "/admin/user/get/" + id,
+                type: "get",
+                success: function (res) {
+                    if (res.code == "success") {
+                        var user = res.data;
+                        layer.open({
+                            type: 2
+                            ,title: '编辑管理员'
+                            ,content: '/admin/html/adduser.html'
+                            ,area: ['420px', '368px']
+                            ,btn: ['确定', '取消']
+                            , yes: function (index, layero) {
+
+                                var iframeWindow = window['layui-layer-iframe' + index]
+                                    ,submitID = 'LAY-user-back-submit'
+                                    ,submit = layero.find('iframe').contents().find('#'+ submitID);
+
+                                //监听提交
+                                iframeWindow.layui.form.on('submit('+ submitID +')', function(data){
+                                    var field = data.field; //获取提交的字段
+                                    layui.layer.load();
+                                    $.ajax({
+                                        url: "/admin/user/add/ed",
+                                        type: "post",
+                                        dataType: "json",
+                                        data: field,
+                                        success: function (resut) {
+                                            layui.layer.closeAll();
+                                            if (resut.code == "success") {
+                                                layer.msg("修改成功");
+
+                                            }else {
+                                                layer.msg(resut.msg);
+                                            }
+                                            table.reload('TableReload');
+                                        },
+                                        error: function (resut) {
+                                            layer.alert('错误', resut.msg);
+                                        }
+                                    });
+                                    layer.close(index); //关闭弹层
+                                });
+
+                                submit.trigger('click');
+                            },
+                            success: function (layero, index) {
+                                var body = layer.getChildFrame('body', index);
+                                var iframeWindow = window['layui-layer-iframe' + index]
+                                body.find("#uId").val(user.uId);
+                                body.find("#userName").val(user.userName);
+                                body.find("#screenName").val(user.screenName);
+                                body.find("#ps").val(user.ps);
+                                body.find("#pwDiv").attr("style","display:none");
+
+                                $.ajax({
+                                    url: '/admin/role/selectList',
+                                    dataType: 'json',
+                                    type: 'get',
+                                    success: function (data) {
+
+                                        //使用循环遍历，给下拉列表赋值
+                                        $.each(data.data, function (index, value) {
+                                            // 下拉菜单里添加元素
+                                            body.find('#roleName').append(new Option(value.roleName,value.rId));
+                                        });
+                                        body.find("#roleName").val(user.rid);
+                                        //重新渲染 固定写法
+                                        iframeWindow.layui.form.render("select");
+                                    }
+                                })
+                            }
+                        });
+
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                },
+                error: function (res) {
+                    $.layer.alert('错误', res.msg);
+                }
+            });
+        }
+
+
+        function dele(id) {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                layer.msg('你确定删除么？', {
+                    time: 5000,//2秒自动关闭
+                    btn: ['确定', '取消'],
+                    yes: function (index) {
+                        $.ajax({
+                            url: "/admin/user/del/" + id,
+                            type: "delete",
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.code == "success") {
+                                    layer.msg("删除成功", {
+                                        time: 2000
+                                    });
+
+                                } else {
+                                    layer.msg(data.msg);
+                                }
+                                table.reload('TableReload');
+
+                            },
+                            error: function (data) {
+                                $.layer.alert('错误', data.msg);
+                            }
+                        });
+                        layer.close(index);
+                    }
+                });
+            });
+        };
+
+
+    });
+
+
+</script>
+</body>
+</html>
+

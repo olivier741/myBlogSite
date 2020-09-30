@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hak.mysite.mapper.vo.TMenuVoMapper">
+  <resultMap id="BaseResultMap" type="com.hak.mysite.model.vo.TMenuAndRoleVo">
+    <id column="me_id" jdbcType="INTEGER" property="meId" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="menu_img" jdbcType="VARCHAR" property="menuImg" />
+    <collection property="roleList" ofType="com.hak.mysite.model.TRoles" >
+      <id  column="r_id" jdbcType="INTEGER" property="rId"/>
+      <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    </collection>
+  </resultMap>
+  
+  <select id="selectAllTMenuAndRoleList" resultMap="BaseResultMap">
+
+    select m.me_id me_id,m.menu_name menu_name,m.menu_url menu_url,m.parent_id parent_id,r.r_id r_id,r.role_name role_name
+    from t_menu m join t_relationships_roles_menu t on m.me_id = t.me_id
+                  join t_roles r on t.r_id = r.r_id
+
+  </select>
+
+  <select id="selectTMenuAndRoleListByRoleName" parameterType="java.lang.String" resultMap="BaseResultMap" >
+
+    select m.me_id me_id,m.menu_name menu_name,m.menu_url menu_url,m.parent_id parent_id,r.r_id r_id,r.role_name role_name
+    from t_menu m join t_relationships_roles_menu t on m.me_id = t.me_id
+                  join t_roles r on t.r_id = r.r_id and r.role_name = #{roleName,jdbcType=VARCHAR}
+    where m.menu_type = 1
+
+  </select>
+
+  <select id="selectAllTMenuAndRoleListByRId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select m.me_id me_id,m.menu_name menu_name,m.menu_url menu_url,m.parent_id parent_id,r.r_id r_id
+    from t_menu m join t_relationships_roles_menu r on m.me_id = r.me_id
+    where r.r_id = #{rId,jdbcType=VARCHAR}
+
+  </select>
+
+
+</mapper>

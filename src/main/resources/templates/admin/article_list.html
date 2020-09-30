@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>文章列表</title>
+
+    <link th:href="@{/admin/layui/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+
+<div class="layui-card">
+    <div class="layui-tab layui-tab-brief">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>文章管理</legend>
+        </fieldset>
+
+        <table id="demo" lay-filter="test"></table>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" th:src="@{/admin/layui/layui/layui.js}"></script>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+        var $ = layui.jquery;
+        table.render({
+            elem: '#demo'
+            ,id: 'TableReload'
+            , height: 405
+            , url: '/admin/article/list'  //数据接口
+            ,request: {
+                pageName: 'page' //页码的参数名称，默认：page
+                ,limitName: 'size' //每页数据量的参数名，默认：limit
+            }
+            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+            /*            ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                            title: '提示'
+                            ,layEvent: 'LAYTABLE_TIPS'
+                            ,icon: 'layui-icon-tips'
+                        }]*/
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code,
+                    "msg": res.message,
+                    "count": res.data.total,
+                    "data": res.data.list
+                };
+            }
+            , cols: [
+                [ //表头
+                    {type: 'numbers', title: '序号', width: 60, sort: true, fixed: 'left'}
+                    , {field: 'title', title: '标题', minWidth: 230, sort: true}
+                    , {field: 'categoriesName', title: '分类', width: 90, sort: true}
+                    , {field: 'screenName', title: '作者', width: 85, sort: true}
+                    , {field: 'statusName', title: '状态', width: 73, sort: true}
+                    , {field: 'hits', title: '阅读量', width: 90, sort: true}
+                    , {
+                    field: 'created',
+                    title: '创建时间',
+                    minWidth: 120,
+                    sort: true,
+                    templet: '<div>{{ layui.util.toDateString(d.created, "yyyy-MM-dd HH:mm:ss") }}</div>'
+                }
+                    , {
+                    field: 'modified',
+                    title: '修改时间',
+                    minWidth: 120,
+                    sort: true,
+                    templet: '<div>{{ layui.util.toDateString(d.modified, "yyyy-MM-dd HH:mm:ss") }}</div>'
+                }
+                    , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 170}
+                ]
+            ]
+            , page: true
+            , limit: 5
+            , limits: [5, 10, 20, 40, 50, 80, 100]
+        });
+
+        //监听工具条
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'detail') {
+                detail(data.cId);
+            } else if (obj.event === 'del') {
+                dele(data.cId);
+            } else if (obj.event === 'edit') {
+                edit(data.cId);
+            }
+        });
+
+
+        function detail(id) {
+            window.open("/admin/article/single/" + id);
+        }
+
+        function edit(id) {
+            window.open("/admin/article/edit/" + id);
+        }
+
+        function dele(id) {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                layer.msg('你确定删除么？', {
+                    time: 5000,//2秒自动关闭
+                    btn: ['确定', '取消'],
+                    yes: function (index) {
+                        $.ajax({
+                            url: "/admin/article/del/" + id,
+                            type: "Get",
+                            dataType: "json",
+                            success: function (data) {
+                                console.log(data);
+                                if (data.code == "success") {
+                                    layer.msg("删除成功", {
+                                        time: 2000
+                                    });
+
+                                } else {
+                                    layer.msg(data.msg);
+                                }
+                                table.reload('TableReload');
+                            },
+                            error: function (data) {
+                                $.layer.alert('错误', data.msg);
+                            }
+                        });
+                        layer.close(index);
+                    }
+                });
+            });
+        };
+
+    });
+
+
+</script>
+
+</html>

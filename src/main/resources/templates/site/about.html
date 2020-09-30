@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="site/head::head(@{About})"></div>
+
+<body id="wrapper">
+
+<!-- header -->
+<div th:replace="site/header::header"></div>
+
+<!-- /////////////////////////////////////////Content -->
+<div id="page-content" class="sub-page">
+    <a name="miao"></a>
+    <!-- //////////// -->
+    <article class="box-content container">
+
+        <div class="svg-container single-post-svg svg-block">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1890 150">
+                <g transform="translate(0,-902.36218)"></g>
+                <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                <path d="m 1925,0 0,150 -1925,0"></path>
+            </svg>
+        </div>
+
+        <div class="post" style="">
+            <h1 class="entry-title">About As</h1>
+            <p>For many years, we have been making sustainable progress possible and driving positive change on every
+                continent. With 2014 sales and revenues of $56 billion, our Company is the world’s leading manufacturer
+                of various products. The company principally operates through its three product segments. Company
+                strategy includes a vision of the future where: we are recognized as the leader everywhere we do
+                business; our products, services and solutions help our customers succeed; our distribution system is a
+                competitive advantage; our supply chain is world class; our business model drives superior results
+                performance consistently rewards our stockholders.<br><br>Our Worldwide Code of Conduct, first published
+                in 1974, defines what we stand for and believe in, documenting the uncompromisingly high ethical
+                standards our company has upheld since its founding in 1925.</p>
+            <div class="note">
+                <ol>
+                    <li>Lorem ipsum</li>
+                    <li>Sit amet vultatup nonumy</li>
+                    <li>Duista sed diam</li>
+                </ol>
+                <div class="clear"></div>
+            </div>
+            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore
+                eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
+                luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+                consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+                erat volutpat.</p>
+        </div>
+
+        <div class="svg-container single-post-svg single-svg-bottom svg-block">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1920 150">
+                <g transform="translate(0,-902.36218)"></g>
+                <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                <path d="M 0,150 0,0 1925,0"></path>
+            </svg>
+        </div>
+
+    </article>
+</div>
+
+<!-- Footer -->
+<div th:replace="site/footer::footer"></div>
+
+<!-- Top Slider -->
+<script type="text/javascript" th:src="@{/site/js/jquery.js}"></script>
+
+<!-- Menu Js -->
+<script type="text/javascript" th:src="@{/site/js/materialMenu.js}"></script>
+<script>
+    var menu = new Menu;
+    window.onload=function(){
+        window.location.href="#miao"
+    }
+</script>
+
+<!-- Bootstrap Core JavaScript -->
+<script type="text/javascript" th:src="@{/site/js/bootstrap.min.js}"></script>
+</body>
+</html>

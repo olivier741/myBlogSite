@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="site/head::head(@{Content})"></div>
+
+<body id="wrapper">
+
+<!-- header -->
+<div th:replace="site/header::header"></div>
+
+<!-- Content -->
+<div th:fragment="content">
+    <a name="miao"></a>
+    <div id="page-content" class="index-page">
+
+        <!-- ////////////Content Box 01 -->
+        <section class="box-content box-5 box-style-3" id="nav-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4" th:each="article : ${articles}" >
+                        <div class="box-item">
+                            <div class="svg-container post-svg svg-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1950 150">
+                                    <g transform="translate(0,-902.36218)"></g>
+                                    <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                                    <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                                    <path d="M 0,150 0,0 1925,0"></path>
+                                </svg>
+                            </div>
+                            <div class="entry-thumb">
+                                <img class="img-responsive" th:src="@{/site/images/1.jpg}">
+                                <a class="thumb-link" th:href="@{'single/'+${article.cId}}"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="content">
+                                <h3 class="entry-title">
+                                    <a th:href="@{'single/'+${article.cId}}" th:text="${article.title}"></a>
+                                </h3>
+                                <p><a th:text="${article.titlePic}"></a></p>
+                                <span  th:text="${#dates.format(article.created, 'yyyy-MM-dd HH:mm:ss')}"></span><br>
+                            </div>
+                            <div class="read-more">
+                                <a th:href="@{'single/'+${article.cId}}">Continue reading …</a>
+                            </div>
+                            <div class="svg-container post-bottom-svg svg-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1890 150">
+                                    <g transform="translate(0,-902.36218)"></g>
+                                    <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                                    <path d="m 898.41609,-33.21176 0.01,0 -0.005,-0.009 -0.005,0.009 z"></path>
+                                    <path d="m 1925,0 0,150 -1925,0"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div th:replace="site/footer::footer"></div>
+
+<!-- Top Slider -->
+<script type="text/javascript" th:src="@{/site/js/jquery.js}"></script>
+
+<!-- Menu Js -->
+<script type="text/javascript" th:src="@{/site/js/materialMenu.js}"></script>
+<script>
+    var menu = new Menu;
+    window.onload=function(){
+        window.location.href="#miao"
+    }
+</script>
+
+<!-- Bootstrap Core JavaScript -->
+<script type="text/javascript" th:src="@{/site/js/bootstrap.min.js}"></script>
+</body>
+</html>

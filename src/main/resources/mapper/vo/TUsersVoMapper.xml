@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hak.mysite.mapper.vo.TUsersVoMapper">
+  <resultMap id="BaseResultMap" type="com.hak.mysite.model.vo.TUsersVo">
+    <id column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="home_url" jdbcType="VARCHAR" property="homeUrl" />
+    <result column="screen_name" jdbcType="VARCHAR" property="screenName" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="ps" jdbcType="VARCHAR" property="ps" />
+    <result column="logged" jdbcType="INTEGER" property="logged" />
+    <result column="group_type" jdbcType="INTEGER" property="groupType" />
+    <result column="locked" jdbcType="INTEGER" property="locked" />
+    <result column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="role_name" jdbcType="INTEGER" property="roleName" />
+  </resultMap>
+
+  <select id="getAllUserList" resultMap="BaseResultMap">
+
+    select U.u_id,U.user_name,U.email,U.home_url,U.screen_name,U.ps,U.logged,
+           U.locked,U.group_type,R.r_id,R.role_name
+    from t_users U left join t_relationships_roles_users T ON U.u_id = T.u_id
+                   left join t_roles R ON R.r_id = T.r_id
+
+  </select>
+
+  <select id="getUserListByUId" resultMap="BaseResultMap" resultType="java.lang.String">
+
+    select U.u_id,U.user_name,U.email,U.home_url,U.screen_name,U.ps,U.logged,
+           U.locked,U.group_type,R.r_id,R.role_name
+    from t_users U left join t_relationships_roles_users T ON U.u_id = T.u_id
+                   left join t_roles R ON R.r_id = T.r_id
+    where U.u_id = #{uId,jdbcType=INTEGER}
+
+  </select>
+
+</mapper>

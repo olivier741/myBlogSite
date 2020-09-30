@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加角色</title>
+    <link rel="stylesheet" href="/admin/layui/layui/css/layui.css" media="all">
+</head>
+<body>
+
+<div id="test1"  style="margin-top: 30px;margin-left: 5%"></div>
+<button id="LAY-user-back-submit" type="button" class="layui-btn" style="display: none" lay-submit lay-filter="LAY-user-back-submit"></button>
+<script src="/admin/layui/layui/layui.js"></script>
+<script>
+/*   layui.use('transfer', function(){
+        var $ = layui.$;
+        var transfer = layui.transfer;
+
+        $.ajax({
+               url: '/admin/role/selectList',
+               dataType: 'json',
+               type: 'get',
+               success: function (data) {
+                   //渲染
+                   transfer.render({
+                       elem: '#test1'  //绑定元素
+                       ,title: ['待选择','已选择']
+                       ,height: 300
+                       ,data: data
+                       ,parseData: function(res){
+                           return {
+                               "value": res.id //数据值
+                               ,"title": res.name //数据标题
+                               ,"checked": res.checked //是否选中
+                           }
+                       }
+                       ,id: 'demo1' //定义索引
+                   });
+               }
+           })
+
+
+
+    });*/
+</script>
+</body>
+</html>

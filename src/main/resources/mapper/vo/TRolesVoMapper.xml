@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hak.mysite.mapper.vo.TRolesVoMapper">
+  <resultMap id="BaseResultMap" type="com.hak.mysite.model.vo.TRolesVo">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="me_id" jdbcType="INTEGER" property="meId" />
+    <result column="checked" jdbcType="INTEGER" property="menuChecked" />
+  </resultMap>
+
+  <select id="getMenuAndRoleListByRId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select  M.me_id,menu_name,case when r_id  is null then '0' else '1' END checked
+    from t_menu M left join t_relationships_roles_menu S ON M.me_id = S.me_id
+    where S.r_id=#{rId,jdbcType=INTEGER}
+    UNION All
+    select E.me_id ,E.menu_name,'0' from t_menu E where E.me_id not in (
+      select  M.me_id
+      from t_menu M left join t_relationships_roles_menu S ON M.me_id = S.me_id
+      where S.r_id=#{rId,jdbcType=INTEGER})
+  </select>
+
+  <insert id="insertRoleAndMenuBatch" parameterType="java.util.ArrayList">
+    insert into t_relationships_roles_menu (r_id,me_id) values
+    <foreach collection="list" index="index" separator="," item="item">
+      (#{item.rId},#{item.meId})
+    </foreach>
+  </insert>
+
+</mapper>

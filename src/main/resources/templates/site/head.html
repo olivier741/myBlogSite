@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="comment(title)">
+    <meta charset="utf-8">
+    <title><th:block th:text="${title!=null?title:'blog'}"></th:block></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Responsive Html5 Templates">
+    <meta name="author" content="">
+
+    <!-- styles -->
+    <link th:href="@{/site/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/site/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/site/css/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/site/css/menu.min.css}" rel="stylesheet" type="text/css">
+
+</head>
+</html>

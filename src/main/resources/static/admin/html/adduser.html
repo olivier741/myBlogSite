@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加用户</title>
+    <link rel="stylesheet" href="/admin/layui/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/admin/layui/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-card">
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+        <div class="layui-form-item">
+
+            <form class="layui-form layui-form-pane" lay-filter="formFilter" >
+                <div class="layui-form-item">
+                    <label class="layui-form-label">角色</label>
+                    <div class="layui-input-block">
+                        <select name="rId" id="roleName" lay-filter="roleFilter">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="userName" id="userName" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">昵称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="screenName" id="screenName" lay-verify="required" lay-reqtext="昵称是必填项，岂能为空？"
+                               placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" id="pwDiv">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="passWord" id="passWord" lay-verify="pass" placeholder="请输入密码" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="ps" id="ps"  placeholder="请输入备注" class="layui-input">
+                    </div>
+                </div>
+                <input type="text" name="uId" id="uId"  class="layui-input" style="display:none;">
+                <button id="LAY-user-back-submit" type="button" class="layui-btn" style="display: none" lay-submit lay-filter="LAY-user-back-submit"></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/admin/layui/layui/layui.js"></script>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        var $ = layui.$;
+
+/*        form.on('select(roleFilter)', function(data){*/
+            /*$.ajax({
+                url: '/admin/role/selectList',
+                dataType: 'json',
+                type: 'get',
+                success: function (data) {
+                    console.log(data);//下面会提到这个data是什么值
+                    //使用循环遍历，给下拉列表赋值
+                    $.each(data.data, function (index, value) {
+                        /!*                    console.log(value.rId);
+                                            console.log(value.roleName);*!/
+                        $('#roleName').append(new Option(value.roleName,value.rId));// 下拉菜单里添加元素
+                    });
+                    layui.form.render("select");//重新渲染 固定写法
+                }
+            })*/
+/*        })*/
+
+
+
+    });
+</script>
+</body>
+</html>
