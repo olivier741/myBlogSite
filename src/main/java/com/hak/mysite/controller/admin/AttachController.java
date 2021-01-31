@@ -18,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author hak
- * @description 附件
+ * @description attachment
  * @date 2020/8/8
  */
-@Api("附件")
+@Api("annex")
 @Controller
 @RequestMapping(value = "/admin/attach")
 public class AttachController {
@@ -32,21 +32,21 @@ public class AttachController {
     @Autowired
     ArticleService articleService;
 
-    @ApiOperation("文章列表")
+    @ApiOperation("Article List")
     @GetMapping(value = {"/list"})
     @ResponseBody
-    public RestDto list( ) throws Exception{
+    public RestDto list() throws Exception{
 
 
 
         return null;
     }
 
-    @ApiOperation("附件上传")
+    @ApiOperation("Attachment upload")
     @GetMapping("/uploadFile}")
-    public String  single(HttpServletRequest request,
+    public String single(HttpServletRequest request,
                           HttpServletResponse response,
-                          @ApiParam(name = "editormd-image-file", value = "文件数组", required = true)
+                          @ApiParam(name = "editormd-image-file", value = "file array", required = true)
                               @RequestParam(name = "editormd-image-file", required = true)
                                       MultipartFile file) throws Exception{
 
@@ -55,9 +55,9 @@ public class AttachController {
         return "admin/single";
     }
 
-    @ApiOperation("附件上传")
+    @ApiOperation("Attachment upload")
     @GetMapping("/uploadMultipleFile}")
-    public String multipleFile(@ApiParam(name = "file", value = "文件数组", required = true)
+    public String multipleFile(@ApiParam(name = "file", value = "file array", required = true)
                                @RequestParam(name = "file", required = true)
                                    MultipartFile[] files){
 

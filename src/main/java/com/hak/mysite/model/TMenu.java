@@ -5,10 +5,10 @@ import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModel;
 /**
- * 菜单表
+ * Menu table
  * @author hak 2020-09-14
  */
-@ApiModel("菜单表")
+@ApiModel("Menu Table")
 public class TMenu {
     /**
      * id
@@ -17,45 +17,45 @@ public class TMenu {
     private Integer meId;
 
     /**
-     * 菜单名称
+     * Menu name
      */
-    @ApiModelProperty("菜单名称")
+    @ApiModelProperty("Menu Name")
     private String menuName;
 
     /**
-     * 菜单url
+     * Menu url
      */
-    @ApiModelProperty("菜单url")
+    @ApiModelProperty("Menu url")
     private String menuUrl;
 
     /**
-     * 菜单类型
+     * Menu type
      */
-    @ApiModelProperty("菜单类型")
+    @ApiModelProperty("Menu Type")
     private Integer menuType;
 
     /**
-     * 上级id
+     * Superior id
      */
-    @ApiModelProperty("上级id")
+    @ApiModelProperty("upper id")
     private Integer parentId;
 
     /**
-     * 创建时间
+     * Creation time
      */
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("Creation Time")
     private Date created;
 
     /**
-     * 修改时间
+     * Change the time
      */
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty("modification time")
     private Date modified;
 
     /**
-     * 图标
+     * Icon
      */
-    @ApiModelProperty("图标")
+    @ApiModelProperty("icon")
     private String menuImg;
 
     /**
@@ -75,114 +75,114 @@ public class TMenu {
     }
 
     /**
-     * 菜单名称
-     * @return menu_name 菜单名称
+     * Menu name
+     * @return menu_name menu name
      */
     public String getMenuName() {
         return menuName;
     }
 
     /**
-     * 菜单名称
-     * @param menuName 菜单名称
+     * Menu name
+     * @param menuName menu name
      */
     public void setMenuName(String menuName) {
-        this.menuName = menuName == null ? null : menuName.trim();
+        this.menuName = menuName == null? null: menuName.trim();
     }
 
     /**
-     * 菜单url
-     * @return menu_url 菜单url
+     * Menu url
+     * @return menu_url menu url
      */
     public String getMenuUrl() {
         return menuUrl;
     }
 
     /**
-     * 菜单url
-     * @param menuUrl 菜单url
+     * Menu url
+     * @param menuUrl menu url
      */
     public void setMenuUrl(String menuUrl) {
-        this.menuUrl = menuUrl == null ? null : menuUrl.trim();
+        this.menuUrl = menuUrl == null? null: menuUrl.trim();
     }
 
     /**
-     * 菜单类型
-     * @return menu_type 菜单类型
+     * Menu type
+     * @return menu_type menu type
      */
     public Integer getMenuType() {
         return menuType;
     }
 
     /**
-     * 菜单类型
-     * @param menuType 菜单类型
+     * Menu type
+     * @param menuType menu type
      */
     public void setMenuType(Integer menuType) {
         this.menuType = menuType;
     }
 
     /**
-     * 上级id
-     * @return parent_id 上级id
+     * Superior id
+     * @return parent_id parent id
      */
     public Integer getParentId() {
         return parentId;
     }
 
     /**
-     * 上级id
-     * @param parentId 上级id
+     * Superior id
+     * @param parentId parent id
      */
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 
     /**
-     * 创建时间
-     * @return created 创建时间
+     * Creation time
+     * @return created creation time
      */
     public Date getCreated() {
         return created;
     }
 
     /**
-     * 创建时间
-     * @param created 创建时间
+     * Creation time
+     * @param created creation time
      */
     public void setCreated(Date created) {
         this.created = created;
     }
 
     /**
-     * 修改时间
-     * @return modified 修改时间
+     * Change the time
+     * @return modified modification time
      */
     public Date getModified() {
         return modified;
     }
 
     /**
-     * 修改时间
-     * @param modified 修改时间
+     * Change the time
+     * @param modified modification time
      */
     public void setModified(Date modified) {
         this.modified = modified;
     }
 
     /**
-     * 图标
-     * @return menu_img 图标
+     * Icon
+     * @return menu_img icon
      */
     public String getMenuImg() {
         return menuImg;
     }
 
     /**
-     * 图标
-     * @param menuImg 图标
+     * Icon
+     * @param menuImg icon
      */
     public void setMenuImg(String menuImg) {
-        this.menuImg = menuImg == null ? null : menuImg.trim();
+        this.menuImg = menuImg == null? null: menuImg.trim();
     }
 }

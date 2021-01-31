@@ -8,17 +8,17 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 文章表
- * @author hak 2020-09-10
- */
-@ApiModel("文章拓展类 ")
+  * Article table
+  * @author hak 2020-09-10
+  */
+@ApiModel("Article Extension Class")
 @Data
 public class TContentsVo extends TContents {
 
-    private String screenName;
+     private String screenName;
 
-    private String categoriesName;
+     private String categoriesName;
 
-    private String statusName;
+     private String statusName;
 
 }

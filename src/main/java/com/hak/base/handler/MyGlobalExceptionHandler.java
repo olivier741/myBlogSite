@@ -20,7 +20,7 @@ public class MyGlobalExceptionHandler {
     @ResponseBody
     public RestDto businessException(MyBusinessException e){
 
-        String msg = "系统错误";
+        String msg = "System error";
         if (e instanceof MyBusinessException){
             msg = e.getMessage();
         }
@@ -33,7 +33,7 @@ public class MyGlobalExceptionHandler {
     @ResponseBody
     public RestDto elseException(Exception e){
 
-        String msg = "系统错误";
+        String msg = "System error";
         log.error("find exception:e={}",e.getMessage());
         e.printStackTrace();
         return RestDto.error(msg);

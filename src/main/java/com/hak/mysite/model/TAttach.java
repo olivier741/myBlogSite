@@ -4,161 +4,164 @@ import java.util.Date;
 
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModel;
+
 /**
- * 附件表
+ * Annex table
+ *
  * @author hak 2020-09-14
  */
-@ApiModel("附件表")
+@ApiModel("Attachment Table")
 public class TAttach {
+
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private Integer aId;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private String fileName;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private Long fileSize;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private String fileUrl;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private Date created;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private String ps;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private Integer cId;
 
     /**
-     * 
-     * @return a_id 
+     *
+     * @return a_id
      */
     public Integer getaId() {
         return aId;
     }
 
     /**
-     * 
-     * @param aId 
+     *
+     * @param aId
      */
     public void setaId(Integer aId) {
         this.aId = aId;
     }
 
     /**
-     * 
-     * @return file_name 
+     *
+     * @return file_name
      */
     public String getFileName() {
         return fileName;
     }
 
     /**
-     * 
-     * @param fileName 
+     *
+     * @param fileName
      */
     public void setFileName(String fileName) {
         this.fileName = fileName == null ? null : fileName.trim();
     }
 
     /**
-     * 
-     * @return file_size 
+     *
+     * @return file_size
      */
     public Long getFileSize() {
         return fileSize;
     }
 
     /**
-     * 
-     * @param fileSize 
+     *
+     * @param fileSize
      */
     public void setFileSize(Long fileSize) {
         this.fileSize = fileSize;
     }
 
     /**
-     * 
-     * @return file_url 
+     *
+     * @return file_url
      */
     public String getFileUrl() {
         return fileUrl;
     }
 
     /**
-     * 
-     * @param fileUrl 
+     *
+     * @param fileUrl
      */
     public void setFileUrl(String fileUrl) {
         this.fileUrl = fileUrl == null ? null : fileUrl.trim();
     }
 
     /**
-     * 
-     * @return created 
+     *
+     * @return created
      */
     public Date getCreated() {
         return created;
     }
 
     /**
-     * 
-     * @param created 
+     *
+     * @param created
      */
     public void setCreated(Date created) {
         this.created = created;
     }
 
     /**
-     * 
-     * @return ps 
+     *
+     * @return ps
      */
     public String getPs() {
         return ps;
     }
 
     /**
-     * 
-     * @param ps 
+     *
+     * @param ps
      */
     public void setPs(String ps) {
         this.ps = ps == null ? null : ps.trim();
     }
 
     /**
-     * 
-     * @return c_id 
+     *
+     * @return c_id
      */
     public Integer getcId() {
         return cId;
     }
 
     /**
-     * 
-     * @param cId 
+     *
+     * @param cId
      */
     public void setcId(Integer cId) {
         this.cId = cId;

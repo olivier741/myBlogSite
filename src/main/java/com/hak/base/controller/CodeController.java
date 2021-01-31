@@ -29,7 +29,7 @@ public class CodeController {
     @Autowired
     private CodeService codeService;
 
-    @ApiOperation("获取码值")
+    @ApiOperation("Get code value")
     @GetMapping("/getCode/{code}")
     public RestDto getCode(@PathVariable String code, HttpServletRequest request) throws Exception{
         List list = codeService.getCodeList(code);

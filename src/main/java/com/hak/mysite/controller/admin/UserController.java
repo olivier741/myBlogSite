@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author hak
- * @description 评论
+ * @description comments
  * @date 2020/8/8
  */
-@Api("用户操作")
+@Api("User Action")
 @Controller
 @RequestMapping(value = "/admin/user")
 public class UserController {
@@ -26,7 +26,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @ApiOperation("用户列表")
+    @ApiOperation("User List")
     @GetMapping(value = {"/list"})
     @ResponseBody
     public RestDto list(final Pageable pageable, final SearchData searchData) throws Exception{
@@ -36,7 +36,7 @@ public class UserController {
         return RestDto.layUISuccess(list);
     }
 
-    @ApiOperation("查询用户")
+    @ApiOperation("Query User")
     @GetMapping("/get/{uId}")
     @ResponseBody
     public RestDto getInfo(@PathVariable Integer uId) throws Exception{
@@ -44,7 +44,7 @@ public class UserController {
         return RestDto.success(tUsersVo);
     }
 
-    @ApiOperation("添加用户")
+    @ApiOperation("Add User")
     @PostMapping("/add/{stat}")
     @ResponseBody
     public RestDto add(TUsersVo tUsersVo,@PathVariable String stat) throws Exception{
@@ -54,7 +54,7 @@ public class UserController {
                 int i = userService.addTUsers(tUsersVo);
                 return RestDto.success();
             }
-            return RestDto.error("用户名已存在");
+            return RestDto.error("Username already exists");
         }else if ("ed".equals(stat)){
             int i = userService.saveTUsers(tUsersVo);
             return RestDto.success();
@@ -62,7 +62,7 @@ public class UserController {
         return null;
     }
 
-    @ApiOperation("用户删除")
+    @ApiOperation("User Delete")
     @DeleteMapping("del/{cid}")
     @ResponseBody
     public RestDto delete(@PathVariable int cid) throws Exception{
@@ -72,7 +72,7 @@ public class UserController {
         return RestDto.success();
     }
 
-    @ApiOperation("删除验证")
+    @ApiOperation("Delete Verification")
     @PostMapping("/checkDel/pwd")
     @ResponseBody
     public RestDto checkPwd(String pwd) throws Exception{
@@ -80,7 +80,7 @@ public class UserController {
         if ("123".equals(pwd)){
             return RestDto.success();
         }
-        return RestDto.error("密码有误");
+        return RestDto.error("The password is wrong");
     }
 
 

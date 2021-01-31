@@ -40,7 +40,7 @@ public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
         //httpServletResponse.setHeader(uuid);
 
        // redisOperation.StringSet(loginUser.getUId().toString(),JSON.toJSON(loginUser).toString());
-        logger.info("登录成功", authentication);
+        logger.info("login successful", authentication);
    /*     httpServletResponse.sendRedirect("/admin/index");*/
 
         //httpServletResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());

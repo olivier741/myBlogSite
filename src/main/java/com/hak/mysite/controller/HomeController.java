@@ -24,14 +24,14 @@ public class HomeController extends BaseController {
     HomeService homeService;
 
 
-    @ApiOperation("blog首页")
+    @ApiOperation("blog Home")
     @GetMapping(value = {"home","/","index"})
     public String  home() {
 
         return "site/index";
     }
 
-    @ApiOperation("blog列表")
+    @ApiOperation("blog list")
     @GetMapping("blog")
     public String  blog(HttpServletRequest request) throws Exception{
         List<TContents> list = homeService.getAllContentsList();
@@ -39,7 +39,7 @@ public class HomeController extends BaseController {
         return "site/content";
     }
 
-    @ApiOperation("文章详细内容")
+    @ApiOperation("Article details")
     @GetMapping("single/{cid}")
     public String  single(@PathVariable int cid, HttpServletRequest request) throws Exception{
         TContents tContents = homeService.getContentsById(cid);
@@ -47,14 +47,14 @@ public class HomeController extends BaseController {
         return "site/single";
     }
 
-    @ApiOperation("关于页面")
+    @ApiOperation("About page")
     @GetMapping("about")
     public String  about() {
 
         return "site/about";
     }
 
-    @ApiOperation("联系页面")
+    @ApiOperation("Contact page")
     @GetMapping("contact")
     public String  contact() {
 

@@ -9,59 +9,59 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 菜单和角色
+ * Menu and roles
  * @author hak 2020-08-25
  */
-@ApiModel("菜单和角色")
+@ApiModel("Menu and Role")
 @Data
 public class TMenuAndRoleVo {
 
     /**
-     * 角色集合
+     * Character collection
      */
-    @ApiModelProperty("角色集合")
+    @ApiModelProperty("role collection")
     List<TRoles> roleList;
 
     /**
-     * 菜单id
+     * Menu id
      */
-    @ApiModelProperty("菜单id")
+    @ApiModelProperty("menu id")
     private Integer meId;
 
     /**
-     * 菜单名称
+     * Menu name
      */
-    @ApiModelProperty("菜单名称")
+    @ApiModelProperty("Menu Name")
     private String menuName;
 
     /**
-     * 菜单url
+     * Menu url
      */
-    @ApiModelProperty("菜单url")
+    @ApiModelProperty("Menu url")
     private String menuUrl;
 
     /**
-     * 上级id
+     * Superior id
      */
-    @ApiModelProperty("上级id")
+    @ApiModelProperty("upper id")
     private Integer parentId;
 
     /**
-     * 创建时间
+     * Creation time
      */
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("Creation Time")
     private Date created;
 
     /**
-     * 修改时间
+     * Change the time
      */
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty("modification time")
     private Date modified;
 
     /**
-     * 图标
+     * Icon
      */
-    @ApiModelProperty("图标")
+    @ApiModelProperty("icon")
     private String menuImg;
 
 }

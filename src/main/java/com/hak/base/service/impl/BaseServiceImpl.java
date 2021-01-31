@@ -35,7 +35,7 @@ public class BaseServiceImpl implements BaseService {
 
 
     /**
-     * 生成主键
+     * Generate primary key
      *
      * @param name
      * @Return java.lang.Integer

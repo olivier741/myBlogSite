@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 废弃
+/** Abandoned
  * @author hak
  * @description
  * @date 2020/8/12
@@ -35,14 +35,14 @@ public class CustomUserService implements UserDetailsService {
         TUsersExample.Criteria criteria = tUsersExample.createCriteria();
         criteria.andUserNameEqualTo(username);
         List<TUsers> list = tUsersMapper.selectByExample(tUsersExample);
-        logger.info("用户名："+username);
-        if(list.size() == 0){
-            throw new UsernameNotFoundException("用户名不存在");
-            // throw new BadCredentialsException("帐号不存在，请重新输入");
-        }
+        logger.info("Username:"+username);
+         if(list.size() == 0){
+             throw new UsernameNotFoundException("Username does not exist");
+             // throw new BadCredentialsException("The account does not exist, please re-enter");
+         }
 
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        //用于添加用户的权限。只要把用户权限添加到authorities 就万事大吉。
+         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+         //Used to add user permissions. Just add user permissions to the authorities and everything will be fine.
 /*        for(SysRole role:user.getRoles())
         {
             authorities.add(new SimpleGrantedAuthority(role.getName()));

@@ -23,7 +23,7 @@ public class RedisObjectOperation {
     private RedisTemplate<Object, Object> objectRedisTemplate;
 
     /***
-     * 操作对象
+     * Operation object
      */
     public void ObjectSet(Object key, Object value) {
         ValueOperations<Object, Object> valueOperations = objectRedisTemplate.opsForValue();
@@ -31,7 +31,7 @@ public class RedisObjectOperation {
     }
 
     /***
-     * 操作元素为对象列表
+     * Operation element is a list of objects
      */
     public void ListSet(Object key, List<Object> values) {
         ListOperations<Object, Object> listOperations = objectRedisTemplate.opsForList();
@@ -39,7 +39,7 @@ public class RedisObjectOperation {
     }
 
     /***
-     * 操作元素为对象集合
+     * Operation elements are collections of objects
      */
     public void SetSet(Object key, Set<Object> values) {
         SetOperations<Object, Object> setOperations = objectRedisTemplate.opsForSet();
@@ -47,7 +47,7 @@ public class RedisObjectOperation {
     }
 
     /***
-     * 获取对象
+     * Get object
      */
     public Object ObjectGet(Object key) {
         ValueOperations<Object, Object> valueOperations = objectRedisTemplate.opsForValue();
@@ -55,7 +55,7 @@ public class RedisObjectOperation {
     }
 
     /***
-     * 列表弹出元素
+     * List popup element
      */
     public Object ListLeftPop(Object key) {
         ListOperations<Object, Object> listOperations = objectRedisTemplate.opsForList();
@@ -63,7 +63,7 @@ public class RedisObjectOperation {
     }
 
     /***
-     * 集合弹出元素
+     * Collection popup elements
      */
     public Object SetPop(Object key) {
         SetOperations<Object, Object> setOperations = objectRedisTemplate.opsForSet();

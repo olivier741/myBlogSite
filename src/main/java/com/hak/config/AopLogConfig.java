@@ -23,10 +23,11 @@ import java.util.Objects;
 @Slf4j
 @Component
 public class AopLogConfig {
+
     private static final String START_TIME = "request-start";
 
     /**
-     * 切入点
+     * Entry point
      */
     @Pointcut("execution(public * com.hak.mysite.controller.admin.*Controller.*(..))")
     public void log() {
@@ -34,9 +35,9 @@ public class AopLogConfig {
     }
 
     /**
-     * 前置操作
+     * Pre-operation
      *
-     * @param point 切入点
+     * @param point entry point
      */
     @Before("log()")
     public void beforeLog(JoinPoint point) {
@@ -44,32 +45,32 @@ public class AopLogConfig {
 
         HttpServletRequest request = Objects.requireNonNull(attributes).getRequest();
 
-        log.info("【请求 URL】：{}", request.getRequestURL());
-        log.info("【请求 IP】：{}", request.getRemoteAddr());
-        log.info("【请求类名】：{}，【请求方法名】：{}", point.getSignature().getDeclaringTypeName(), point.getSignature().getName());
+        log.info("[Request URL]: {}", request.getRequestURL());
+        log.info("[Request IP]: {}", request.getRemoteAddr());
+        log.info("[Request class name]: {}, [Request method name]: {}", point.getSignature().getDeclaringTypeName(), point.getSignature().getName());
 
         Map<String, String[]> parameterMap = request.getParameterMap();
-        log.info("【请求参数】：{}，", JSON.toJSONString(parameterMap));
+        log.info("[Request parameters]: {},", JSON.toJSONString(parameterMap));
         Long start = System.currentTimeMillis();
         request.setAttribute(START_TIME, start);
     }
 
     /**
-     * 环绕操作
+     * Surround operation
      *
-     * @param point 切入点
-     * @return 原方法返回值
-     * @throws Throwable 异常信息
+     * @param point entry point
+     * @return Original method return value
+     * @throws Throwable exception information
      */
     @Around("log()")
     public Object aroundLog(ProceedingJoinPoint point) throws Throwable {
         Object result = point.proceed();
-        log.info("【返回值】：{}", JSON.toJSONString  (result));
+        log.info("[Return value]: {}", JSON.toJSONString(result));
         return result;
     }
 
     /**
-     * 后置操作
+     * Post-operation
      */
     @AfterReturning("log()")
     public void afterReturning() {
@@ -78,10 +79,10 @@ public class AopLogConfig {
 
         Long start = (Long) request.getAttribute(START_TIME);
         Long end = System.currentTimeMillis();
-        log.info("【请求耗时】：{}毫秒", end - start);
+        log.info("[Request time-consuming]: {} milliseconds", end - start);
 
         String header = request.getHeader("User-Agent");
         UserAgent userAgent = UserAgent.parseUserAgentString(header);
-        log.info("【浏览器类型】：{}，【操作系统】：{}，【原始User-Agent】：{}", userAgent.getBrowser().toString(), userAgent.getOperatingSystem().toString(), header);
+        log.info("[Browser Type]: {}, [Operating System]: {}, [Original User-Agent]: {}", userAgent.getBrowser().toString(), userAgent.getOperatingSystem().toString(), header);
     }
 }

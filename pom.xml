@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hak</groupId>
-    <artifactId>haksite</artifactId>
+    <artifactId>myBlogSite</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>haksite</name>
+    <name>myBlogSite</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -110,6 +110,12 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+         <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
             <scope>runtime</scope>
         </dependency>
 

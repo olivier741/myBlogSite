@@ -21,10 +21,10 @@ import java.util.List;
 
 /**
  * @author hak
- * @description 后台首页
+ * @description background homepage
  * @date 2020/8/8
  */
-@Api("后台首页")
+@Api("Background Homepage")
 @Controller
 @RequestMapping(value = "/admin")
 public class IndexController extends BaseController {
@@ -38,7 +38,7 @@ public class IndexController extends BaseController {
     @Autowired
     UserService userService;
 
-    @ApiOperation("进入首页")
+    @ApiOperation("Enter the homepage")
     @GetMapping(value = {"","/index"})
     public String index(HttpServletRequest request) throws Exception{
 
@@ -48,7 +48,7 @@ public class IndexController extends BaseController {
         return "admin/index";
     }
 
-    @ApiOperation("跳转控制台")
+    @ApiOperation("Jump console")
     @GetMapping(value = {"/home"})
     public String home() throws Exception{
 
@@ -56,7 +56,7 @@ public class IndexController extends BaseController {
     }
 
 
-    @ApiOperation("跳转消息")
+    @ApiOperation("Jump Message")
     @GetMapping(value = {"/message"})
     public String message() throws Exception{
 
@@ -64,28 +64,28 @@ public class IndexController extends BaseController {
     }
 
 
-    @ApiOperation("登陆")
+    @ApiOperation("Login")
     @GetMapping(value = {"/login"})
     public String login(HttpServletRequest request){
 
         return "admin/login";
     }
 
-    @ApiOperation("跳转基本信息")
+    @ApiOperation("Jump basic information")
     @GetMapping(value = {"/userInfo"})
     public String info() throws Exception{
 
         return "admin/user/info";
     }
 
-    @ApiOperation("跳转修改密码")
+    @ApiOperation("Jump to modify password")
     @GetMapping(value = {"/userPwd"})
     public String pwd() throws Exception{
 
         return "admin/user/password";
     }
 
-    @ApiOperation("修改密码")
+    @ApiOperation("Modify Password")
     @PostMapping(value = {"/userPwd/edit"})
     @ResponseBody
     public RestDto editPwd(String oldPassWord, String newPassWord) throws Exception{
@@ -93,19 +93,19 @@ public class IndexController extends BaseController {
         if (getLoginInfo().getPassword().equals(MD5Util.encode(oldPassWord))){
             int i = userService.editPwd(getLoginInfo(),MD5Util.encode(newPassWord));
         }else {
-            return RestDto.error("原始密码有误");
+            return RestDto.error("The original password is wrong");
         }
         return RestDto.success();
     }
 
-    @ApiOperation("跳转文章列表")
+    @ApiOperation("Jump Article List")
     @GetMapping(value = {"/article"})
     public String article() throws Exception{
 
         return "admin/article_list";
     }
 
-    @ApiOperation("跳转发布文章")
+    @ApiOperation("Jump to publish article")
     @GetMapping(value = {"/publish"})
     public String publish(HttpServletRequest request) throws Exception{
 
@@ -115,14 +115,14 @@ public class IndexController extends BaseController {
     }
 
 
-    @ApiOperation("跳转评论列表")
+    @ApiOperation("Jump comment list")
     @GetMapping(value = {"/comment"})
     public String commentList() throws Exception{
 
         return "/admin/comment_list";
     }
 
-    @ApiOperation("跳转标签列表")
+    @ApiOperation("jump tag list")
     @GetMapping(value = {"/meta"})
     public String metaList() throws Exception{
 
@@ -130,7 +130,7 @@ public class IndexController extends BaseController {
     }
 
 
-    @ApiOperation("跳转用户列表")
+    @ApiOperation("Jump User List")
     @GetMapping(value = {"/user"})
     public String userList() throws Exception{
 
@@ -138,7 +138,7 @@ public class IndexController extends BaseController {
     }
 
 
-    @ApiOperation("跳转权限列表")
+    @ApiOperation("jump permission list")
     @GetMapping(value = {"/role"})
     public String roleList() throws Exception{
 

@@ -21,10 +21,10 @@ import java.util.List;
 
 /**
  * @author hak
- * @description 后台首页
+ * @description Background Home
  * @date 2020/8/8
  */
-@Api("后台首页")
+@Api("Background Home")
 @Controller
 @RequestMapping(value = "/admin/article")
 public class ArticleController extends BaseController {
@@ -38,7 +38,7 @@ public class ArticleController extends BaseController {
     @Autowired
     MetaService metaService;
 
-    @ApiOperation("文章列表")
+    @ApiOperation("Article list")
     @GetMapping(value = {"/list"})
     @ResponseBody
     public RestDto list(final Pageable pageable) throws Exception{
@@ -48,7 +48,7 @@ public class ArticleController extends BaseController {
         return RestDto.layUISuccess(list);
     }
 
-    @ApiOperation("文章预览")
+    @ApiOperation("Article preview")
     @GetMapping("single/{cid}")
     public String  single(@PathVariable int cid, HttpServletRequest request) throws Exception{
         TContents tContents = articleService.getContentsById(cid);
@@ -56,7 +56,7 @@ public class ArticleController extends BaseController {
         return "admin/single";
     }
 
-    @ApiOperation("文章删除")
+    @ApiOperation("Article delete")
     @GetMapping("del/{cid}")
     @ResponseBody
     public RestDto delete(@PathVariable int cid) throws Exception{
@@ -65,7 +65,7 @@ public class ArticleController extends BaseController {
 
         return RestDto.success();
     }
-    @ApiOperation("编辑文章跳转")
+    @ApiOperation("Edit article jump")
     @GetMapping("/edit/{cid}")
     public String  edit(@PathVariable int cid, HttpServletRequest request) throws Exception{
 
@@ -75,7 +75,7 @@ public class ArticleController extends BaseController {
         request.setAttribute("tCategories", list);
         return "admin/article_edit";
     }
-    @ApiOperation("发布文章/保存草稿/编辑保存")
+    @ApiOperation("Post article / save draft / edit save")
     @PostMapping(value = {"/publish/{type}"})
     @ResponseBody
     public RestDto publish(@RequestParam(name = "cId", required = false)Integer cId,
@@ -99,19 +99,19 @@ public class ArticleController extends BaseController {
         tContents.setContent(content);
 
         if ("fb".equals(type)){
-            //发布
-            tContents.setStatus(1);
-            articleService.insertTContents(tContents);
-        }else if ("cg".equals(type)){
-            //草稿
-            tContents.setStatus(0);
-            articleService.insertTContents(tContents);
-        }else if ("xgfb".equals(type)){
-            //编辑发布
-            tContents.setStatus(1);
-            articleService.updateTContents(tContents);
-        }else if ("xgcg".equals(type)){
-            //编辑草稿
+         // publish
+             tContents.setStatus(1);
+             articleService.insertTContents(tContents);
+         }else if ("cg".equals(type)){
+             // draft
+             tContents.setStatus(0);
+             articleService.insertTContents(tContents);
+         }else if ("xgfb".equals(type)){
+             // edit release
+             tContents.setStatus(1);
+             articleService.updateTContents(tContents);
+         }else if ("xgcg".equals(type)){
+             // Edit draft
             tContents.setStatus(0);
             articleService.updateTContents(tContents);
         }

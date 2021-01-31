@@ -22,10 +22,10 @@ import java.util.Map;
 
 /**
  * @author hak
- * @description 评论
+ * @description comments
  * @date 2020/8/8
  */
-@Api("角色")
+@Api("role")
 @Controller
 @RequestMapping(value = "/admin/role")
 public class RoleController {
@@ -33,7 +33,7 @@ public class RoleController {
     @Autowired
     RoleService roleService;
 
-    @ApiOperation("角色列表")
+    @ApiOperation("Role List")
     @GetMapping(value = {"/list"})
     @ResponseBody
     public RestDto list(final Pageable pageable, final SearchData searchData) throws Exception{
@@ -43,16 +43,16 @@ public class RoleController {
         return RestDto.layUISuccess(list);
     }
 
-    @ApiOperation("角色下拉选")
+    @ApiOperation("Role drop-down selection")
     @GetMapping("/selectList")
     @ResponseBody
-    public RestDto selectList( ) throws Exception{
+    public RestDto selectList() throws Exception{
         List list = roleService.selectList();
 
         return RestDto.success(list);
     }
 
-    @ApiOperation("添加角色")
+    @ApiOperation("Add role")
     @PostMapping(value = {"/add"})
     @ResponseBody
     public RestDto addRole(TRoles roles) throws Exception{
@@ -60,7 +60,7 @@ public class RoleController {
         return RestDto.success();
     }
 
-    @ApiOperation("权限列表")
+    @ApiOperation("Permission List")
     @GetMapping(value = {"/get/{id}"})
     @ResponseBody
     public RestDto getRole(@PathVariable Integer id) throws Exception{
@@ -68,15 +68,15 @@ public class RoleController {
         return RestDto.success(map);
     }
 
-    @ApiOperation("编辑菜单权限")
+    @ApiOperation("Edit menu permissions")
     @PostMapping(value = {"/menu/edit/{id}"})
     @ResponseBody
-    public RestDto menuEdit(@PathVariable Integer id , @RequestBody List<Map> list) throws Exception{
+    public RestDto menuEdit(@PathVariable Integer id, @RequestBody List<Map> list) throws Exception{
         roleService.updateMenuByRId(id,list);
         return RestDto.success();
     }
 
-    @ApiOperation("删除角色")
+    @ApiOperation("Delete Role")
     @DeleteMapping(value = {"/del/{id}"})
     @ResponseBody
     public RestDto delRole(@PathVariable Integer id) throws Exception{
@@ -85,7 +85,7 @@ public class RoleController {
             int i = roleService.deleteRoleByRId(id);
             return RestDto.success(i);
         }else {
-            return RestDto.error("该角色下存在用户信息");
+            return RestDto.error("User information exists under this role");
         }
 
     }

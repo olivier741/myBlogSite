@@ -23,7 +23,7 @@ public class RedisOperation {
     private StringRedisTemplate redisTemplate;
 
     /***
-     * 操作普通字符串
+     * Manipulate ordinary strings
      */
     public void StringSet(String key, String value) {
         ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
@@ -31,7 +31,7 @@ public class RedisOperation {
     }
 
     /***
-     * 操作列表
+     * Operation list
      */
     public void ListSet(String key, List<String> values) {
         ListOperations<String, String> listOperations = redisTemplate.opsForList();
@@ -39,7 +39,7 @@ public class RedisOperation {
     }
 
     /***
-     * 操作集合
+     * Operation set
      */
     public void SetSet(String key, Set<String> values) {
         SetOperations<String, String> setOperations = redisTemplate.opsForSet();
@@ -47,7 +47,7 @@ public class RedisOperation {
     }
 
     /***
-     * 获取字符串
+     * Get string
      */
     public String StringGet(String key) {
         ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
@@ -55,7 +55,7 @@ public class RedisOperation {
     }
 
     /***
-     * 列表弹出元素
+     * List popup element
      */
     public String ListLeftPop(String key) {
         ListOperations<String, String> listOperations = redisTemplate.opsForList();
@@ -63,7 +63,7 @@ public class RedisOperation {
     }
 
     /***
-     * 集合弹出元素
+     * Collection popup elements
      */
     public String SetPop(String key) {
         SetOperations<String, String> setOperations = redisTemplate.opsForSet();

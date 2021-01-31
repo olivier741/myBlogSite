@@ -17,10 +17,10 @@ import java.util.List;
 
 /**
  * @author hak
- * @description 评论
+ * @description comments
  * @date 2020/8/8
  */
-@Api("评论操作")
+@Api("Comment Operation")
 @Controller
 @RequestMapping(value = "/admin/comment")
 public class CommentController {
@@ -28,7 +28,7 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
-    @ApiOperation("评论列表")
+    @ApiOperation("Comment List")
     @GetMapping(value = {"/list"})
     @ResponseBody
     public RestDto list(final Pageable pageable, final SearchData searchData) throws Exception{
@@ -38,7 +38,7 @@ public class CommentController {
         return RestDto.layUISuccess(list);
     }
 
-    @ApiOperation("评论删除")
+    @ApiOperation("Comment deleted")
     @DeleteMapping("del/{cid}")
     @ResponseBody
     public RestDto delete(@PathVariable int cid) throws Exception{
@@ -48,7 +48,7 @@ public class CommentController {
         return RestDto.success();
     }
 
-    @ApiOperation("评论删除")
+    @ApiOperation("Comment deleted")
     @DeleteMapping("/batchDel")
     @ResponseBody
     public RestDto batchDel(@RequestParam(value = "list[]",required = false) List list) throws Exception{

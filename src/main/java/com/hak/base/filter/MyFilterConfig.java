@@ -16,7 +16,7 @@ public class MyFilterConfig {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         StaticResourceFilter staticResourceFilter = new StaticResourceFilter();
         filterRegistrationBean.setFilter(staticResourceFilter);
-        //配置过滤规则
+     // Configure filtering rules
         filterRegistrationBean.addUrlPatterns("*.js","*.html","*.css");
         return filterRegistrationBean;
     }

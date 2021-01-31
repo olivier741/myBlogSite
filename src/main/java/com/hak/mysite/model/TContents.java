@@ -5,360 +5,359 @@ import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModel;
 /**
- * 文章表
+ * Article table
  * @author hak 2020-09-14
  */
-@ApiModel("文章表")
+@ApiModel("Article Table")
 public class TContents {
     /**
-     * 文章id
+     * Article id
      */
-    @ApiModelProperty("文章id")
+    @ApiModelProperty("Article id")
     private Integer cId;
 
     /**
-     * 题目
+     * Title
      */
-    @ApiModelProperty("题目")
+    @ApiModelProperty("title")
     private String title;
 
     /**
-     * 描述
+     * Description
      */
-    @ApiModelProperty("描述")
+    @ApiModelProperty("Description")
     private String titlePic;
 
     /**
-     * 创建时间
+     * Creation time
      */
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("Creation Time")
     private Date created;
 
     /**
-     * 修改时间
+     * Change the time
      */
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty("modification time")
     private Date modified;
 
     /**
-     * 浣滆€卛d
+     * Use €卛d
      */
-    @ApiModelProperty("浣滆€卛d")
+    @ApiModelProperty("Hua 滆€卛d")
     private Integer authorId;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private String type;
 
     /**
-     * 状态
+     * Status
      */
-    @ApiModelProperty("状态")
+    @ApiModelProperty("Status")
     private Integer status;
 
     /**
-     * 标签
+     * Label
      */
-    @ApiModelProperty("标签")
+    @ApiModelProperty("tag")
     private String tags;
 
     /**
-     * 分类
+     * Classification
      */
-    @ApiModelProperty("分类")
+    @ApiModelProperty("Classification")
     private Integer categories;
 
     /**
-     * 阅读量
+     * Reading volume
      */
-    @ApiModelProperty("阅读量")
+    @ApiModelProperty("reading volume")
     private Integer hits;
 
     /**
-     * 评论数量
+     * Number of comments
      */
-    @ApiModelProperty("评论数量")
+    @ApiModelProperty("number of comments")
     private Integer commentsNum;
 
     /**
-     * 是否允许评论
+     * Whether to allow comments
      */
-    @ApiModelProperty("是否允许评论")
+    @ApiModelProperty("Do you allow comments")
     private Integer allowComment;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private Integer allowPing;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private Integer allowFeed;
 
     /**
-     * 文章内容
+     * Article content
      */
-    @ApiModelProperty("文章内容")
+    @ApiModelProperty("article content")
     private String content;
 
     /**
-     * 文章id
-     * @return c_id 文章id
+     * Article id
+     * @return c_id article id
      */
     public Integer getcId() {
         return cId;
     }
 
     /**
-     * 文章id
-     * @param cId 文章id
+     * Article id
+     * @param cId article id
      */
     public void setcId(Integer cId) {
         this.cId = cId;
     }
 
     /**
-     * 题目
-     * @return title 题目
+     * Title
+     * @return title title
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * 题目
-     * @param title 题目
+     * Title
+     * @param title title
      */
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title == null? null: title.trim();
     }
 
     /**
-     * 描述
-     * @return title_Pic 描述
+     * Description
+     * @return title_Pic description
      */
     public String getTitlePic() {
         return titlePic;
     }
 
     /**
-     * 描述
-     * @param titlePic 描述
+     * Description
+     * @param titlePic description
      */
     public void setTitlePic(String titlePic) {
-        this.titlePic = titlePic == null ? null : titlePic.trim();
+        this.titlePic = titlePic == null? null: titlePic.trim();
     }
 
     /**
-     * 创建时间
-     * @return created 创建时间
+     * Creation time
+     * @return created creation time
      */
     public Date getCreated() {
         return created;
     }
 
     /**
-     * 创建时间
-     * @param created 创建时间
+     * Creation time
+     * @param created creation time
      */
     public void setCreated(Date created) {
         this.created = created;
     }
 
     /**
-     * 修改时间
-     * @return modified 修改时间
+     * Change the time
+     * @return modified modification time
      */
     public Date getModified() {
         return modified;
     }
 
     /**
-     * 修改时间
-     * @param modified 修改时间
+     * Change the time
+     * @param modified modification time
      */
     public void setModified(Date modified) {
         this.modified = modified;
     }
 
     /**
-     * 浣滆€卛d
-     * @return author_id 浣滆€卛d
+     * Use €卛d
+     * @return author_id 廆€卛d
      */
     public Integer getAuthorId() {
         return authorId;
     }
 
     /**
-     * 浣滆€卛d
-     * @param authorId 浣滆€卛d
+     * Use €卛d
+     * @param authorId 廆€卛d
      */
     public void setAuthorId(Integer authorId) {
         this.authorId = authorId;
     }
 
     /**
-     * 
-     * @return type 
+     *
+     * @return type
      */
     public String getType() {
         return type;
     }
 
     /**
-     * 
-     * @param type 
+     *
+     * @param type
      */
     public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+        this.type = type == null? null: type.trim();
     }
 
     /**
-     * 状态
-     * @return status 状态
+     * Status
+     * @return status
      */
     public Integer getStatus() {
         return status;
     }
 
     /**
-     * 状态
-     * @param status 状态
+     * Status
+     * @param status
      */
     public void setStatus(Integer status) {
         this.status = status;
     }
 
     /**
-     * 标签
-     * @return tags 标签
+     * Label
+     * @return tags tag
      */
     public String getTags() {
         return tags;
     }
 
     /**
-     * 标签
-     * @param tags 标签
+     * Label
+     * @param tags tag
      */
     public void setTags(String tags) {
-        this.tags = tags == null ? null : tags.trim();
+        this.tags = tags == null? null: tags.trim();
     }
 
     /**
-     * 分类
-     * @return categories 分类
+     * Classification
+     * @return categories
      */
     public Integer getCategories() {
         return categories;
     }
 
     /**
-     * 分类
-     * @param categories 分类
+     * Classification
+     * @param categories
      */
     public void setCategories(Integer categories) {
         this.categories = categories;
     }
 
     /**
-     * 阅读量
-     * @return hits 阅读量
+     * Reading volume
+     * @return hits reading
      */
     public Integer getHits() {
         return hits;
     }
 
     /**
-     * 阅读量
-     * @param hits 阅读量
+     * Reading volume
+     * @param hits reading
      */
     public void setHits(Integer hits) {
         this.hits = hits;
     }
 
     /**
-     * 评论数量
-     * @return comments_num 评论数量
+     * Number of comments
+     * @return comments_num number of comments
      */
     public Integer getCommentsNum() {
         return commentsNum;
     }
 
     /**
-     * 评论数量
-     * @param commentsNum 评论数量
+     * Number of comments
+     * @param commentsNum number of comments
      */
     public void setCommentsNum(Integer commentsNum) {
         this.commentsNum = commentsNum;
     }
-
-    /**
-     * 是否允许评论
-     * @return allow_comment 是否允许评论
+   /**
+     * Whether to allow comments
+     * @return allow_comment Whether to allow comments
      */
     public Integer getAllowComment() {
         return allowComment;
     }
 
     /**
-     * 是否允许评论
-     * @param allowComment 是否允许评论
+     * Whether to allow comments
+     * @param allowComment whether to allow comments
      */
     public void setAllowComment(Integer allowComment) {
         this.allowComment = allowComment;
     }
 
     /**
-     * 
-     * @return allow_ping 
+     *
+     * @return allow_ping
      */
     public Integer getAllowPing() {
         return allowPing;
     }
 
     /**
-     * 
-     * @param allowPing 
+     *
+     * @param allowPing
      */
     public void setAllowPing(Integer allowPing) {
         this.allowPing = allowPing;
     }
 
     /**
-     * 
-     * @return allow_feed 
+     *
+     * @return allow_feed
      */
     public Integer getAllowFeed() {
         return allowFeed;
     }
 
     /**
-     * 
-     * @param allowFeed 
+     *
+     * @param allowFeed
      */
     public void setAllowFeed(Integer allowFeed) {
         this.allowFeed = allowFeed;
     }
 
     /**
-     * 文章内容
-     * @return content 文章内容
+     * Article content
+     * @return content Article content
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * 文章内容
-     * @param content 文章内容
+     * Article content
+     * @param content article content
      */
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content == null? null: content.trim();
     }
 }

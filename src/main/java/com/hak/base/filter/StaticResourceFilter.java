@@ -28,7 +28,7 @@ public class StaticResourceFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//        logger.info("---------过滤器开启-----------");
+       logger.info("--------- Filter is on -----------");
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 

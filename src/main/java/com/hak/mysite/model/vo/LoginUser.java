@@ -13,82 +13,82 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 登陆用户信息
+ * Login user information
  * @author hak 2020-08-26
  */
-@ApiModel("登陆用户信息")
+@ApiModel("Login User Information")
 @Data
 public class LoginUser implements UserDetails {
     /**
-     * 用户id
+     * User id
      */
-    @ApiModelProperty("用户id")
+    @ApiModelProperty("User id")
     private Integer uId;
 
     /**
-     * 登陆用户名
+     * Login user name
      */
-    @ApiModelProperty("登陆用户名")
+    @ApiModelProperty("Login Username")
     private String userName;
 
     /**
-     * 密码
+     * Password
      */
-    @ApiModelProperty("密码")
+    @ApiModelProperty("Password")
     private String passWord;
 
     /**
-     * 邮箱
+     * Email
      */
-    @ApiModelProperty("邮箱")
+    @ApiModelProperty("Mailbox")
     private String email;
 
     /**
-     * url地址
+     * url address
      */
-    @ApiModelProperty("url地址")
+    @ApiModelProperty("url address")
     private String homeUrl;
 
     /**
-     * 显示姓名
+     * Display name
      */
-    @ApiModelProperty("显示姓名")
+    @ApiModelProperty("Display name")
     private String screenName;
 
     /**
-     * 修改时间
+     * Change the time
      */
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty("modification time")
     private Date modified;
 
     /**
-     * 备注
+     * Remarks
      */
-    @ApiModelProperty("备注")
+    @ApiModelProperty("Remarks")
     private String ps;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private Integer logged;
 
     /**
-     * 用户组
+     * user group
      */
-    @ApiModelProperty("用户组")
+    @ApiModelProperty("User Group")
     private Integer groupType;
 
     /**
-     * 角色
+     * Character
      */
-    @ApiModelProperty("角色")
+    @ApiModelProperty("role")
     private String roleName;
 
     /**
-     * 是否锁定
+     * Is it locked
      */
-    @ApiModelProperty("是否锁定")
+    @ApiModelProperty("Is it locked")
     private Integer locked;
 
     @Override
@@ -115,7 +115,7 @@ public class LoginUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return locked == 1?true:false;
+        return locked == 1? true:false;
     }
 
     @Override

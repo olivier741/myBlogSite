@@ -3,138 +3,138 @@ package com.hak.mysite.model;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModel;
 /**
- * 日志表
+ * Log sheet
  * @author hak 2020-09-14
  */
-@ApiModel("日志表")
+@ApiModel("log table")
 public class TLogs {
     /**
-     * 日志id
+     * Log id
      */
-    @ApiModelProperty("日志id")
+    @ApiModelProperty("log id")
     private Integer id;
 
     /**
-     * 事件
+     * Event
      */
-    @ApiModelProperty("事件")
+    @ApiModelProperty("Event")
     private String action;
 
     /**
-     * 数据
+     * Data
      */
-    @ApiModelProperty("数据")
+    @ApiModelProperty("Data")
     private String data;
 
     /**
-     * 用户id
+     * User id
      */
-    @ApiModelProperty("用户id")
+    @ApiModelProperty("User id")
     private Integer authorId;
 
     /**
-     * ip地址
+     * ip address
      */
-    @ApiModelProperty("ip地址")
+    @ApiModelProperty("ip address")
     private String ip;
 
     /**
-     * 创建时间
+     * Creation time
      */
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("Creation Time")
     private Integer created;
 
     /**
-     * 日志id
-     * @return id 日志id
+     * Log id
+     * @return id log id
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * 日志id
-     * @param id 日志id
+     * Log id
+     * @param id log id
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 事件
-     * @return action 事件
+     * Event
+     * @return action event
      */
     public String getAction() {
         return action;
     }
 
     /**
-     * 事件
-     * @param action 事件
+     * Event
+     * @param action event
      */
     public void setAction(String action) {
-        this.action = action == null ? null : action.trim();
+        this.action = action == null? null: action.trim();
     }
 
     /**
-     * 数据
-     * @return data 数据
+     * Data
+     * @return data data
      */
     public String getData() {
         return data;
     }
 
     /**
-     * 数据
-     * @param data 数据
+     * Data
+     * @param data data
      */
     public void setData(String data) {
-        this.data = data == null ? null : data.trim();
+        this.data = data == null? null: data.trim();
     }
 
     /**
-     * 用户id
-     * @return author_Id 用户id
+     * User id
+     * @return author_Id user id
      */
     public Integer getAuthorId() {
         return authorId;
     }
 
     /**
-     * 用户id
-     * @param authorId 用户id
+     * User id
+     * @param authorId user id
      */
     public void setAuthorId(Integer authorId) {
         this.authorId = authorId;
     }
 
     /**
-     * ip地址
-     * @return ip ip地址
+     * ip address
+     * @return ip ip address
      */
     public String getIp() {
         return ip;
     }
 
     /**
-     * ip地址
-     * @param ip ip地址
+     * ip address
+     * @param ip ip address
      */
     public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
+        this.ip = ip == null? null: ip.trim();
     }
 
     /**
-     * 创建时间
-     * @return created 创建时间
+     * Creation time
+     * @return created creation time
      */
     public Integer getCreated() {
         return created;
     }
 
     /**
-     * 创建时间
-     * @param created 创建时间
+     * Creation time
+     * @param created creation time
      */
     public void setCreated(Integer created) {
         this.created = created;

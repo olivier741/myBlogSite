@@ -3,10 +3,10 @@ package com.hak.mysite.model;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModel;
 /**
- * 码表
+ * Code table
  * @author hak 2020-09-14
  */
-@ApiModel("码表")
+@ApiModel("stopwatch")
 public class TCode {
     /**
      * id
@@ -15,27 +15,27 @@ public class TCode {
     private Integer id;
 
     /**
-     * 表名
+     * Table Name
      */
-    @ApiModelProperty("表名")
+    @ApiModelProperty("table name")
     private String tableName;
 
     /**
-     * 字段名
+     * Field name
      */
-    @ApiModelProperty("字段名")
+    @ApiModelProperty("Field Name")
     private String code;
 
     /**
-     * 码值
+     * Code value
      */
-    @ApiModelProperty("码值")
+    @ApiModelProperty("Code Value")
     private String codeValue;
 
     /**
-     * 码值名称
+     * Code value name
      */
-    @ApiModelProperty("码值名称")
+    @ApiModelProperty("Code value name")
     private String codeName;
 
     /**
@@ -55,66 +55,66 @@ public class TCode {
     }
 
     /**
-     * 表名
-     * @return table_name 表名
+     * Table Name
+     * @return table_name table name
      */
     public String getTableName() {
         return tableName;
     }
 
     /**
-     * 表名
-     * @param tableName 表名
+     * Table Name
+     * @param tableName table name
      */
     public void setTableName(String tableName) {
-        this.tableName = tableName == null ? null : tableName.trim();
+        this.tableName = tableName == null? null: tableName.trim();
     }
 
     /**
-     * 字段名
-     * @return code 字段名
+     * Field name
+     * @return code field name
      */
     public String getCode() {
         return code;
     }
 
     /**
-     * 字段名
-     * @param code 字段名
+     * Field name
+     * @param code field name
      */
     public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
+        this.code = code == null? null: code.trim();
     }
 
     /**
-     * 码值
-     * @return code_value 码值
+     * Code value
+     * @return code_value code value
      */
     public String getCodeValue() {
         return codeValue;
     }
 
     /**
-     * 码值
-     * @param codeValue 码值
+     * Code value
+     * @param codeValue code value
      */
     public void setCodeValue(String codeValue) {
-        this.codeValue = codeValue == null ? null : codeValue.trim();
+        this.codeValue = codeValue == null? null: codeValue.trim();
     }
 
     /**
-     * 码值名称
-     * @return code_name 码值名称
+     * Code value name
+     * @return code_name code value name
      */
     public String getCodeName() {
         return codeName;
     }
 
     /**
-     * 码值名称
-     * @param codeName 码值名称
+     * Code value name
+     * @param codeName code value name
      */
     public void setCodeName(String codeName) {
-        this.codeName = codeName == null ? null : codeName.trim();
+        this.codeName = codeName == null? null: codeName.trim();
     }
 }

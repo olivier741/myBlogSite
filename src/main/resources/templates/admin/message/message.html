@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>消息中心</title>
+  <title>Message Center</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-  <link th:href="@{/admin/layui/layui/css/layui.css}"  rel="stylesheet" type="text/css"/>
-  <link th:href="@{/admin/layui/style/admin.css}"  rel="stylesheet" type="text/css"/>
+  <link th:href="@{/admin/layui/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/admin/layui/style/admin.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
@@ -16,17 +16,17 @@
     <div class="layui-card">
       <div class="layui-tab layui-tab-brief">
         <ul class="layui-tab-title">
-          <li class="layui-this">全部消息</li>
-          <li>通知<span class="layui-badge">6</span></li>
-          <li>私信</li>
+          <li class="layui-this">All messages</li>
+          <li>Notice <span class="layui-badge">6</span></li>
+          <li>Private message</li>
         </ul>
         <div class="layui-tab-content">
         
           <div class="layui-tab-item layui-show">
             <div class="LAY-app-message-btns" style="margin-bottom: 10px;">
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-events="del">删除</button>
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-events="ready">标记已读</button>
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-events="readyAll">全部已读</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-events="del">Delete</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-events="ready">Mark as read</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-events="readyAll">All read</button>
             </div>
             
             <table id="LAY-app-message-all" lay-filter="LAY-app-message-all"></table>
@@ -34,9 +34,9 @@
           <div class="layui-tab-item">
           
             <div class="LAY-app-message-btns" style="margin-bottom: 10px;">
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-events="del">删除</button>
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-events="ready">标记已读</button>
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-events="readyAll">全部已读</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-events="del">Delete</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-events="ready">Mark as read</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-events="readyAll">read all</button>
             </div>
             
             <table id="LAY-app-message-notice" lay-filter="LAY-app-message-notice"></table>
@@ -44,9 +44,9 @@
           <div class="layui-tab-item">
           
             <div class="LAY-app-message-btns" style="margin-bottom: 10px;">
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-events="del">删除</button>
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-events="ready">标记已读</button>
-              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-events="readyAll">全部已读</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-events="del">Delete</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-events="ready">Mark as read</button>
+              <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-events="readyAll">All read</button>
             </div>
             
             <table id="LAY-app-message-direct" lay-filter="LAY-app-message-direct"></table>
@@ -59,10 +59,10 @@
   <script type="text/javascript" th:src="@{/admin/layui/layui/layui.js}"></script>
   <script>
   layui.config({
-    base: '/admin/layui/' //静态资源所在路径
+    base:'/admin/layui/' //The path of static resources
   }).extend({
-    index: 'lib/index' //主入口模块
-  }).use(['index', 'message']);
+    index:'lib/index' //Main entry module
+  }).use(['index','message']);
   </script>
 </body>
 </html>

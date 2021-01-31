@@ -5,94 +5,94 @@ import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModel;
 /**
- * 角色表
+ * Role table
  * @author hak 2020-09-14
  */
-@ApiModel("角色表")
+@ApiModel("Character table")
 public class TRoles {
     /**
-     * 角色id
+     * Role id
      */
-    @ApiModelProperty("角色id")
+    @ApiModelProperty("role id")
     private Integer rId;
 
     /**
-     * 名称
+     * Name
      */
-    @ApiModelProperty("名称")
+    @ApiModelProperty("Name")
     private String roleName;
 
     /**
-     * 创建时间
+     * Creation time
      */
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("Creation Time")
     private Date created;
 
     /**
-     * 修改时间
+     * Change the time
      */
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty("modification time")
     private Date modified;
 
     /**
-     * 角色id
-     * @return r_id 角色id
+     * Role id
+     * @return r_id role id
      */
     public Integer getrId() {
         return rId;
     }
 
     /**
-     * 角色id
-     * @param rId 角色id
+     * Role id
+     * @param rId role id
      */
     public void setrId(Integer rId) {
         this.rId = rId;
     }
 
     /**
-     * 名称
-     * @return role_name 名称
+     * Name
+     * @return role_name name
      */
     public String getRoleName() {
         return roleName;
     }
 
     /**
-     * 名称
-     * @param roleName 名称
+     * Name
+     * @param roleName name
      */
     public void setRoleName(String roleName) {
-        this.roleName = roleName == null ? null : roleName.trim();
+        this.roleName = roleName == null? null: roleName.trim();
     }
 
     /**
-     * 创建时间
-     * @return created 创建时间
+     * Creation time
+     * @return created creation time
      */
     public Date getCreated() {
         return created;
     }
 
     /**
-     * 创建时间
-     * @param created 创建时间
+     * Creation time
+     * @param created creation time
      */
     public void setCreated(Date created) {
         this.created = created;
     }
 
     /**
-     * 修改时间
-     * @return modified 修改时间
+     * Change the time
+     * @return modified modification time
      */
     public Date getModified() {
         return modified;
     }
 
     /**
-     * 修改时间
-     * @param modified 修改时间
+     * Change the time
+     * @param modified modification time
      */
     public void setModified(Date modified) {
         this.modified = modified;

@@ -18,7 +18,7 @@ import java.util.Iterator;
 
 /**
  * @author hak
- * @description  自定义权限决策管理器
+ * @description  Custom permission decision manager
  * @date 2020/8/26
  */
 @Component
@@ -31,30 +31,30 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
         Iterator<ConfigAttribute> iterator = configAttributes.iterator();
         while (iterator.hasNext()) {
             if (authentication == null) {
-                throw new AccessDeniedException("当前访问没有权限");
+            throw new AccessDeniedException("The current access does not have permission");
             }
             ConfigAttribute ca = iterator.next();
-            //当前请求需要的权限
+            //The permissions required for the current request
             String needRole = ca.getAttribute();
             if ("ROLE_LOGIN".equals(needRole)) {
                 if (authentication instanceof AnonymousAuthenticationToken) {
-                    throw new BadCredentialsException("未登录");
+                    throw new BadCredentialsException("Not logged in");
                 } else{
-                    logger.info("ROLE_LOGIN——————权限");
+                    logger.info("ROLE_LOGIN——————Permission");
                     return;
                 }
             }
-            //当前用户所具有的权限
+            //The permissions of the current user
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-            for (GrantedAuthority authority : authorities) {
+            for (GrantedAuthority authority: authorities) {
                 if (authority.getAuthority().equals(needRole)) {
                     return;
                 }
             }
         }
         String requestUrl = ((FilterInvocation) object).getRequestUrl();
-        logger.warn("当前访问路径{}，权限不足", requestUrl);
-        throw new AccessDeniedException("权限不足!");
+        logger.warn("Current access path {}, insufficient permissions", requestUrl);
+        throw new AccessDeniedException("Insufficient permissions!");
     }
 
     @Override

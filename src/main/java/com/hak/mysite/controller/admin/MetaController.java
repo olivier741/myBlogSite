@@ -18,10 +18,10 @@ import java.util.List;
 
 /**
  * @author hak
- * @description 评论
+ * @description comments
  * @date 2020/8/8
  */
-@Api("标签操作")
+@Api("tag operation")
 @Controller
 @RequestMapping(value = "/admin/meta")
 public class MetaController {
@@ -29,7 +29,7 @@ public class MetaController {
     @Autowired
     MetaService metaService;
 
-    @ApiOperation("标签列表")
+    @ApiOperation("tag list")
     @GetMapping(value = {"/list"})
     @ResponseBody
     public RestDto list(final Pageable pageable, final SearchData searchData) throws Exception{
@@ -39,7 +39,7 @@ public class MetaController {
         return RestDto.layUISuccess(list);
     }
 
-    @ApiOperation("评论删除")
+    @ApiOperation("Comment deleted")
     @DeleteMapping("del/{cid}")
     @ResponseBody
     public RestDto delete(@PathVariable int cid) throws Exception{

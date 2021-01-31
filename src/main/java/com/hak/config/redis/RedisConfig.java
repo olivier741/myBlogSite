@@ -23,18 +23,18 @@ public class RedisConfig {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
 
-        // 使用 Jackson2JsonRedisSerialize  需要导入依赖 com.fasterxml.jackson.core jackson-databind
+        // Use Jackson2JsonRedisSerialize to import dependency com.fasterxml.jackson.core jackson-databind
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
 
         ObjectMapper objectMapper = new ObjectMapper();
-        // 第一个参数表示: 表示所有访问者都受到影响 包括 字段, getter / isGetter,setter，creator
-        // 第二个参数表示: 所有类型的访问修饰符都是可接受的，不论是公有还有私有表变量都会被序列化
+        // The first parameter means: Indicates that all visitors are affected, including field, getter / isGetter, setter, creator
+        // The second parameter means: All types of access modifiers are acceptable, both public and private table variables will be serialized
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
 
         jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
 
-        // 设置 key,value 序列化规则
+        // Set key, value serialization rules
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.afterPropertiesSet();

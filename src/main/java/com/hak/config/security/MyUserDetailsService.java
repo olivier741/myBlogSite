@@ -27,7 +27,7 @@ public class MyUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LoginUser loginUser = loginUserMapper.selectLoginUserByUserName(username);
         if(loginUser == null){
-            throw new UsernameNotFoundException("用户名不存在");
+            throw new UsernameNotFoundException("Username does not exist");
         }
         return  loginUser;
     }

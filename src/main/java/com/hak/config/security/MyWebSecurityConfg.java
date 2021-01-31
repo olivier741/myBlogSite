@@ -26,10 +26,10 @@ public class MyWebSecurityConfg extends WebSecurityConfigurerAdapter {
     MyLoginSuccessHandler myLoginSuccessHandler;
     @Autowired
     CustomExpiredSessionStrategy customExpiredSessionStrategy;
-    //权限过滤器
+    //Permission filter
     @Autowired
     private MyFilterInvocationSecurityMetadataSource myFilterInvocationSecurityMetadataSource;
-    //权限决策器
+    //Permission Decider
     @Autowired
     private MyAccessDecisionManager myAccessDecisionManager;
 
@@ -37,7 +37,7 @@ public class MyWebSecurityConfg extends WebSecurityConfigurerAdapter {
     private MyUserDetailsService myUserDetailsService;
 
     /**
-     * 授权
+     * Authorization
      *
      * @param http
      * @Return void
@@ -47,18 +47,18 @@ public class MyWebSecurityConfg extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //解决 X-Frame-Options' to 'DENY'
+        //Solve X-Frame-Options' to'DENY'
         http.headers().frameOptions().disable();
-        //session 操作
+        //session operation
         http.sessionManagement().invalidSessionUrl("/admin/login")
-                //当达到最大值时，是否保留已经登录的用户
+                //When the maximum value is reached, whether to keep logged in users
                 .maximumSessions(1)
-                //当达到最大值时，旧用户被踢出后的操作
+                //Operation after the old user is kicked out when the maximum is reached
                 .maxSessionsPreventsLogin(false)
-                //当达到最大值时，旧用户被踢出后的操作
+                //Operation after the old user is kicked out when the maximum is reached
                 .expiredSessionStrategy(customExpiredSessionStrategy);
 
-        // 配置拦截规则
+        // Configure interception rules
         http.authorizeRequests()
                 .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
@@ -69,7 +69,7 @@ public class MyWebSecurityConfg extends WebSecurityConfigurerAdapter {
                     }
                 })
                 .and()
-                // 配置登录功能
+                // Configure login function
                 .formLogin()
                 .loginPage("/admin/login")
                 .usernameParameter("username")
@@ -78,18 +78,18 @@ public class MyWebSecurityConfg extends WebSecurityConfigurerAdapter {
                 .failureHandler(myLoginFailureHandler)
                 .successHandler(myLoginSuccessHandler)
                 .permitAll()
-/*                .defaultSuccessUrl("/admin/index",true)
+                /*                .defaultSuccessUrl("/admin/index",true)
                 .failureForwardUrl("/admin/login?error")*/
                 .and()
                 .csrf().disable();
-        // 注销成功跳转首页
+        // Log out successfully and jump to the homepage
         http.logout().logoutSuccessUrl("/admin/login");
-        //开启记住我功能
+        //Turn on remember me function
         http.rememberMe().rememberMeParameter("rememberMe");
     }
 
     /**
-     * 认证
+     * Certification
      *
      * @param auth
      * @Return void
@@ -100,7 +100,7 @@ public class MyWebSecurityConfg extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-            auth.userDetailsService(myUserDetailsService).passwordEncoder(new PasswordEncoder() {
+        auth.userDetailsService(myUserDetailsService).passwordEncoder(new PasswordEncoder() {
 
             @Override
             public String encode(CharSequence rawPassword) {
@@ -116,7 +116,7 @@ public class MyWebSecurityConfg extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * 配置放行的资源
+     * Configure release resources
      *
      * @param web
      * @Return void

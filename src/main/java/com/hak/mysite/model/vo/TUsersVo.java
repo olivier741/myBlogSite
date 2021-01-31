@@ -8,15 +8,15 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 用户拓展类
- * @author hak 2020-09-10
- */
-@ApiModel("用户拓展类")
+  * User expansion
+  * @author hak 2020-09-10
+  */
+@ApiModel("User Extension Class")
 @Data
 public class TUsersVo extends TUsers {
 
-    private Integer rId;
+     private Integer rId;
 
-    private String roleName;
+     private String roleName;
 
 }

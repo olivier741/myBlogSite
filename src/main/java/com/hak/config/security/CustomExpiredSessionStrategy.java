@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * @author hak
- * @description  旧用户被踢出后处理
+ * @description  Processing after the old user is kicked out
  * @date 2020/8/14
  */
 @Component
@@ -24,7 +24,7 @@ public class CustomExpiredSessionStrategy implements SessionInformationExpiredSt
     public void onExpiredSessionDetected(SessionInformationExpiredEvent event) throws IOException, ServletException {
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
-        map.put("msg","已经另一台机器登录，您被迫下线。" + event.getSessionInformation().getLastRequest());
+        map.put("msg","You are already logged in on another machine and you are forced to go offline." + event.getSessionInformation().getLastRequest());
         String s = objectMapper.writeValueAsString(map);
         event.getResponse().setContentType("application/json;charset=UTF-8");
         event.getResponse().getWriter().write(s);

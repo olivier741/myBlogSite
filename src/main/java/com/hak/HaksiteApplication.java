@@ -15,13 +15,13 @@ public class HaksiteApplication {
 
     public static void main(String[] args) {
 
-        try {
-            ConfigurableApplicationContext context = SpringApplication.run(HaksiteApplication.class, args);
-            int length = context.getBeanDefinitionNames().length;
-            log.debug("Spring boot启动初始化了 {} 个 Bean", length);
-        } catch (Exception e) {
-            log.error("【SpringBootDemoLogbackApplication】启动异常：", e);
-        }
+       try {
+             ConfigurableApplicationContext context = SpringApplication.run(HaksiteApplication.class, args);
+             int length = context.getBeanDefinitionNames().length;
+             log.debug("Spring boot initialized {} Beans", length);
+         } catch (Exception e) {
+             log.error("[SpringBootDemoLogbackApplication] startup exception:", e);
+         }
     }
 
 }

@@ -28,23 +28,23 @@ public class MyLoginFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
 
-        String msg = "" ;
-        if (e instanceof BadCredentialsException ||
-                e instanceof UsernameNotFoundException) {
-            msg = "账户名或者密码输入错误";
-        } else if (e instanceof LockedException) {
-            msg = "账户被锁定，请联系管理员";
-        } else if (e instanceof CredentialsExpiredException) {
-            msg = "密码过期，请联系管理员";
-        } else if (e instanceof AccountExpiredException) {
-            msg = "账户过期，请联系管理员";
-        } else if (e instanceof DisabledException) {
-            msg = "账户被禁用，请联系管理员";
-        } else {
-            msg = "登录失败";
-        }
+      String msg = "";
+         if (e instanceof BadCredentialsException ||
+                 e instanceof UsernameNotFoundException) {
+             msg = "The account name or password is entered incorrectly";
+         } else if (e instanceof LockedException) {
+             msg = "The account is locked, please contact the administrator";
+         } else if (e instanceof CredentialsExpiredException) {
+             msg = "Password expired, please contact the administrator";
+         } else if (e instanceof AccountExpiredException) {
+             msg = "Account expired, please contact the administrator";
+         } else if (e instanceof DisabledException) {
+             msg = "The account is disabled, please contact the administrator";
+         } else {
+             msg = "Login failed";
+         }
 
-        logger.info("登录失败");
+         logger.info("Login failed");
         httpServletResponse.setContentType("application/json;charset=UTF-8");
         httpServletResponse.getWriter().write(JSON.toJSON(RestDto.error(msg)).toString());
         httpServletResponse.getWriter().flush();

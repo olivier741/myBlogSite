@@ -5,160 +5,160 @@ import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModel;
 /**
- * 标签表
+ * Label table
  * @author hak 2020-09-14
  */
-@ApiModel("标签表")
+@ApiModel("tag table")
 public class TMetas {
     /**
-     * 标签id
+     * Tag id
      */
-    @ApiModelProperty("标签id")
+    @ApiModelProperty("tag id")
     private Integer mId;
 
     /**
-     * 名称
+     * Name
      */
-    @ApiModelProperty("名称")
+    @ApiModelProperty("Name")
     private String name;
 
     /**
-     * 类型
+     * Types of
      */
-    @ApiModelProperty("类型")
+    @ApiModelProperty("Type")
     private String type;
 
     /**
-     * 描述
+     * Description
      */
-    @ApiModelProperty("描述")
+    @ApiModelProperty("Description")
     private String description;
 
     /**
-     * 修改时间
+     * Change the time
      */
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty("modification time")
     private Date modified;
 
     /**
-     * 
+     *
      */
     @ApiModelProperty("")
     private Integer parent;
 
     /**
-     * 操作者
+     * operator
      */
-    @ApiModelProperty("操作者")
+    @ApiModelProperty("Operator")
     private Integer uId;
 
     /**
-     * 标签id
-     * @return m_id 标签id
+     * Tag id
+     * @return m_id tag id
      */
     public Integer getmId() {
         return mId;
     }
 
     /**
-     * 标签id
-     * @param mId 标签id
+     * Tag id
+     * @param mId tag id
      */
     public void setmId(Integer mId) {
         this.mId = mId;
     }
 
     /**
-     * 名称
-     * @return name 名称
+     * Name
+     * @return name name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * 名称
-     * @param name 名称
+     * Name
+     * @param name name
      */
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name == null? null: name.trim();
     }
 
     /**
-     * 类型
-     * @return type 类型
+     * Types of
+     * @return type
      */
     public String getType() {
         return type;
     }
 
     /**
-     * 类型
-     * @param type 类型
+     * Types of
+     * @param type
      */
     public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+        this.type = type == null? null: type.trim();
     }
 
     /**
-     * 描述
-     * @return description 描述
+     * Description
+     * @return description description
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * 描述
-     * @param description 描述
+     * Description
+     * @param description description
      */
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description == null? null: description.trim();
     }
 
     /**
-     * 修改时间
-     * @return modified 修改时间
+     * Change the time
+     * @return modified modification time
      */
     public Date getModified() {
         return modified;
     }
 
     /**
-     * 修改时间
-     * @param modified 修改时间
+     * Change the time
+     * @param modified modification time
      */
     public void setModified(Date modified) {
         this.modified = modified;
     }
 
     /**
-     * 
-     * @return parent 
+     *
+     * @return parent
      */
     public Integer getParent() {
         return parent;
     }
 
     /**
-     * 
-     * @param parent 
+     *
+     * @param parent
      */
     public void setParent(Integer parent) {
         this.parent = parent;
     }
 
     /**
-     * 操作者
-     * @return u_id 操作者
+     * operator
+     * @return u_id operator
      */
     public Integer getuId() {
         return uId;
     }
 
     /**
-     * 操作者
-     * @param uId 操作者
+     * operator
+     * @param uId operator
      */
     public void setuId(Integer uId) {
         this.uId = uId;
